@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
@@ -20,15 +21,10 @@ Route::get('/', function () {
 
 Route::get('/post/{name}', function ($name) {
 
+    //find the post by its slug and pass it to post view
     
+    $post = Post::find($name);
     
-    if(! file_exists($post_path = __DIR__ . "/../resources/posts/{$name}.html")){
-        return redirect('/');
-    }
-
-    $post = cache()->remember("post.{$name}", now()->addSeconds(5000), fn() => file_get_contents($post_path));
-
-
     return view('post', [
         'post' => $post
     ]);
