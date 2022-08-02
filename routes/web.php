@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,8 +20,16 @@ Route::get('/', function () {
 
 Route::get('/post/{name}', function ($name) {
 
-    $post = file_get_contents(__DIR__ . "/../resources/posts/{$name}.html");
+    
+    
+    if(! file_exists($post_path = __DIR__ . "/../resources/posts/{$name}.html")){
+        return redirect('/');
+    }
+
+    $post = cache()->remember("post.{$name}", now()->addSeconds(5000), fn() => file_get_contents($post_path));
+
+
     return view('post', [
         'post' => $post
     ]);
-});
+})->where('name', '[A-z_0-9/-]+');
