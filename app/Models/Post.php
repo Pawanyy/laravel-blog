@@ -30,6 +30,17 @@ class Post
         return static::all()->firstWhere('slug', $slug);
     }
 
+    public static function findOrfail($slug)
+    {
+        $post = static::find($slug);
+
+        if(! $post){
+            throw new ModelNotFoundException();
+        }
+
+        return $post;
+    }
+
     public static function all(){
 
         return cache()->rememberForever('post.all', function () {
