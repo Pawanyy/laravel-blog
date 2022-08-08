@@ -9,7 +9,17 @@
 </head>
 <body>
 
-<?=$post?>
+    <article>
+        <a href="/post/<?=$post->slug?>">
+            <h1>
+                <?=$post->title?>
+            </h1>
+        </a>
+
+        <div>
+            <?=$post->body?>
+        </div>
+    </article>
     <a href="/">Go Back</a>
 
 </body>
