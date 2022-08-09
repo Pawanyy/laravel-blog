@@ -2,7 +2,7 @@
     <x-slot name="content">
         @foreach ($posts as $post)
             <article>
-                <a href="/post/{{ $post->slug }}">
+                <a href="/post/{{ $post->id }}">
                     <h1>
                         {{ $post->title }}
                     </h1>
