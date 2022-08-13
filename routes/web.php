@@ -37,7 +37,7 @@ Route::get('/categories/{category:slug}', function (Category $category) {
 
     //find the posts by its category slug and pass it to posts view
     return view('posts', [
-        'posts' =>  $category->posts
+        'posts' =>  $category->posts->load(['category', 'author'])
     ]);
 });
 
@@ -45,6 +45,6 @@ Route::get('/authors/{author:username}', function (User $author) {
 
     //find the posts by its category slug and pass it to posts view
     return view('posts', [
-        'posts' =>  $author->posts
+        'posts' =>  $author->posts->load(['category', 'author'])
     ]);
 });
