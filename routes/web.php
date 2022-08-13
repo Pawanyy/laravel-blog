@@ -2,6 +2,7 @@
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
@@ -20,7 +21,7 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 Route::get('/', function () {
 
     return view('posts', [
-        'posts' => Post::with('category')->get()
+        'posts' => Post::latest()->with(['category', 'author'])->get()
     ]);
 });
 
@@ -37,5 +38,13 @@ Route::get('/categories/{category:slug}', function (Category $category) {
     //find the posts by its category slug and pass it to posts view
     return view('posts', [
         'posts' =>  $category->posts
+    ]);
+});
+
+Route::get('/authors/{author:username}', function (User $author) {
+
+    //find the posts by its category slug and pass it to posts view
+    return view('posts', [
+        'posts' =>  $author->posts
     ]);
 });
