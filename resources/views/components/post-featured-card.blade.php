@@ -7,8 +7,7 @@
         <div class="flex-1 flex flex-col justify-between ml-4">
             <header>
                 <div class="mt-3 lg:mt-0 space-x-2">
-                    <a class="px-2 py-1 border border-blue-300 text-blue-300 uppercase rounded-full text-xs font-semibold"
-                        href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a>
+                    <x-category-button :category="$post->category"/>
                 </div>
                 <div class="mt-4">
                     <h1 class="text-3xl">{{ $post->title }}</h1>
