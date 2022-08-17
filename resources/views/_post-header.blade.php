@@ -17,20 +17,29 @@
             <span class="relative flex md:inline-flex bg-gray-200 rounded-full items-center">
                 <select class="reset flex-1 appearance-none py-2 px-5 pr-8 bg-transparent font-bold">
                     <option selected> Category</option>
-                    <option>Style</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->slug }}">{{ $category->name }}</option>
+                    @endforeach
                 </select>
-                <svg class="reset rotate-90 absolute right-2 text-xs pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z"/></svg>
+                <svg class="reset rotate-90 absolute right-2 text-xs pointer-events-none"
+                    xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                    <path d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z" />
+                </svg>
             </span>
             <span class="relative flex md:inline-flex bg-gray-200 rounded-full items-center">
                 <select class="reset flex-1 appearance-none py-2 px-5 pr-8 bg-transparent font-bold">
                     <option selected> Other Filters</option>
                     <option>Style</option>
                 </select>
-                <svg class="reset rotate-90 absolute right-2 text-xs pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z"/></svg>
+                <svg class="reset rotate-90 absolute right-2 text-xs pointer-events-none"
+                    xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                    <path d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z" />
+                </svg>
             </span>
             <span class="relative flex md:inline-flex bg-gray-200 rounded-full px-3 py-2">
                 <form action="" method="post">
-                    <input type="text" name="searchTerm" class="bg-transparent placeholder-black font-bold" placeholder="Search">
+                    <input type="text" name="searchTerm" class="bg-transparent placeholder-black font-bold"
+                        placeholder="Search">
                 </form>
             </span>
         </div>
