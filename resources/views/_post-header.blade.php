@@ -15,29 +15,24 @@
 
         <div class="tw-flex tw-justify-center space-y-2 md:space-y-0 md:space-x-4 mt-10">
             <div class="relative md:inline-flex bg-gray-100 rounded-xl">
-                <div x-data="{ show: false }" @click.away="show = false">
-                    <button @click="show = !show"
-                        class="text-left flex w-full md:w-32 lg:w-32 py-2 px-5 pr-8 font-bold">
-                        {{ isset($currentCategory) ? ucwords($currentCategory->name) : 'All' }}
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 reset absolute right-2 text-xs"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    <div x-show="show" class="absolute mt-4 py-2 bg-gray-100 text-sm w-full rounded-xl z-50"
-                        style="display: none">
-                        <a href="/"
-                            class="text-left leading-6 block px-3 py-2 hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white">All</a>
-                        @foreach ($categories as $category)
-                            <a href="/categories/{{ $category->slug }}"
-                                class="text-left leading-6 block px-3 py-2
-                                hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white
-                                {{ isset($currentCategory) && $currentCategory->is($category) ? 'bg-blue-500 text-white' : '' }}">
-                                {{ ucwords($category->name) }}
-                            </a>
-                        @endforeach
-                    </div>
-                </div>
+                <x-dropdown>
+                    <x-slot name="trigger">
+                        <button class="text-left flex w-full md:w-32 lg:w-32 py-2 px-5 pr-8 font-bold">
+                            {{ isset($currentCategory) ? ucwords($currentCategory->name) : 'All' }}
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 reset absolute right-2 text-xs"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                    </x-slot>
+
+                    <x-dropdown-item href="/">All</x-dropdown-item>
+                    @foreach ($categories as $category)
+                        <x-dropdown-item href="/categories/{{ $category->slug }}" :active="request()->is('categories/' . $category->slug)">
+                            {{ ucwords($category->name) }}
+                        </x-dropdown-item>
+                    @endforeach
+                </x-dropdown>
             </div>
             <span class="relative flex md:inline-flex bg-gray-100 rounded-xl items-center">
                 <select class="reset flex-1 appearance-none py-2 px-5 pr-8 bg-transparent font-bold">
