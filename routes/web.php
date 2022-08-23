@@ -39,6 +39,7 @@ Route::get('/categories/{category:slug}', function (Category $category) {
     //find the posts by its category slug and pass it to posts view
     return view('posts', [
         'posts' =>  $category->posts->load(['category', 'author']),
+        'currentCategory' => $category,
         'categories' => Category::all()
     ]);
 });
