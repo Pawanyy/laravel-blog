@@ -7,7 +7,7 @@
         <div class="flex-1 flex flex-col justify-between ml-4">
             <header>
                 <div class="mt-3 lg:mt-0 space-x-2">
-                    <x-category-button :category="$post->category"/>
+                    <x-category-button :category="$post->category" />
                 </div>
                 <div class="mt-4">
                     <h1 class="text-3xl">{{ $post->title }}</h1>
@@ -23,7 +23,7 @@
                 <div class="flex items-center text-sm">
                     <img src="/images/lary-avatar.svg" class="mr-2" alt="" srcset="">
                     <div>
-                        <h5 class="font-bold">{{ $post->author->username }}</h5>
+                        <a href="/authors/{{ $post->author->username }}" class="font-bold">{{ $post->author->name }}</a>
                         <h6>Mascot at Laracasts</h6>
                     </div>
                 </div>
