@@ -14,29 +14,35 @@
         </p>
 
         <div class="tw-flex tw-justify-center space-y-2 md:space-y-0 md:space-x-4 mt-10">
-            <span class="relative flex md:inline-flex bg-gray-200 rounded-full items-center">
-                <select class="reset flex-1 appearance-none py-2 px-5 pr-8 bg-transparent font-bold">
-                    <option selected> Category</option>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->slug }}">{{ $category->name }}</option>
-                    @endforeach
-                </select>
-                <svg class="reset rotate-90 absolute right-2 text-xs pointer-events-none"
-                    xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-                    <path d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z" />
-                </svg>
-            </span>
-            <span class="relative flex md:inline-flex bg-gray-200 rounded-full items-center">
+            <div class="relative md:inline-flex bg-gray-100 rounded-xl">
+                <div x-data="{ show: false }" @click.away="show = false">
+                    <button @click="show = !show" class="text-left flex w-full md:w-35 py-2 px-5 pr-8 font-bold">
+                        Category
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 reset absolute right-2 text-xs"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div x-show="show" class="absolute mt-4 py-2 bg-gray-100 text-sm w-full rounded-xl z-50"
+                        style="display: none">
+                        @foreach ($categories as $category)
+                            <a href="/categories/{{ $category->slug }}"
+                                class="text-left leading-6 block px-3 py-2 hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white">{{ $category->name }}</a>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <span class="relative flex md:inline-flex bg-gray-100 rounded-xl items-center">
                 <select class="reset flex-1 appearance-none py-2 px-5 pr-8 bg-transparent font-bold">
                     <option selected> Other Filters</option>
                     <option>Style</option>
                 </select>
-                <svg class="reset rotate-90 absolute right-2 text-xs pointer-events-none"
-                    xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-                    <path d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z" />
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 reset absolute right-2 text-xs" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
             </span>
-            <span class="relative flex md:inline-flex bg-gray-200 rounded-full px-3 py-2">
+            <span class="relative flex md:inline-flex bg-gray-100 rounded-xl px-3 py-2">
                 <form action="" method="post">
                     <input type="text" name="searchTerm" class="bg-transparent placeholder-black font-bold"
                         placeholder="Search">
