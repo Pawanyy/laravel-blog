@@ -19,10 +19,7 @@
                     <x-slot name="trigger">
                         <button class="text-left flex w-full md:w-32 lg:w-32 py-2 px-5 pr-8 font-bold">
                             {{ isset($currentCategory) ? ucwords($currentCategory->name) : 'All' }}
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 reset absolute right-2 text-xs"
-                                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                            </svg>
+                            <x-icon name="down-arrow" class="h-6 w-6 reset absolute right-2 text-xs" />
                         </button>
                     </x-slot>
 
@@ -39,10 +36,7 @@
                     <option selected> Other Filters</option>
                     <option>Style</option>
                 </select>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 reset absolute right-2 text-xs" fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
+                <x-icon name="down-arrow" class="h-6 w-6 reset absolute right-2 text-xs" />
             </span>
             <span class="relative flex md:inline-flex bg-gray-100 rounded-xl px-3 py-2">
                 <form action="" method="post">
