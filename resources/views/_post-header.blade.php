@@ -4,16 +4,7 @@
             Latest <span class="text-blue-500">Laravel From Scratch</span> News
         </h1>
 
-        <h2 class="inline-flex mt-4">
-            By Lary Laracore <img src="/images/lary-head.svg" alt="Lary Head">
-        </h2>
-
-        <p class="mt-10 text-sm">
-            Another year. Another update. We're refreshing the popular Laravel series with new content.
-            I'm going to keep you guys up to speed with what's going on!
-        </p>
-
-        <div class="tw-flex tw-justify-center space-y-2 md:space-y-0 md:space-x-4 mt-10">
+        <div class="tw-flex tw-justify-center space-y-2 md:space-y-0 md:space-x-4 mt-4">
             <div class="relative md:inline-flex bg-gray-100 rounded-xl">
                 <x-dropdown>
                     <x-slot name="trigger">

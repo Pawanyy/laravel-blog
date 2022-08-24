@@ -5,7 +5,7 @@
     </div>
 
     {{-- Links --}}
-    <div x-show="show" class="absolute mt-4 py-2 bg-gray-100 text-sm w-full rounded-xl z-50" style="display: none">
+    <div x-show="show" class="absolute mt-4 py-2 bg-gray-100 text-sm w-full rounded-xl z-50 overflow-auto max-h-52" style="display: none">
         {{ $slot }}
     </div>
 </div>

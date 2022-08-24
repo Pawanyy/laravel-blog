@@ -16,8 +16,8 @@
                     </span>
                 </div>
             </header>
-            <div class="mt-6 text-sm">
-                {{ $post->excerpt }}
+            <div class="mt-6 text-sm space-y-4">
+                {!! $post->excerpt !!}
             </div>
             <footer class="flex mt-4 justify-between items-center">
                 <div class="flex items-center text-sm">
