@@ -30,7 +30,7 @@
                 <x-icon name="down-arrow" class="h-6 w-6 reset absolute right-2 text-xs" />
             </span>
             <span class="relative flex md:inline-flex bg-gray-100 rounded-xl px-3 py-2">
-                <form action="" method="post">
+                <form action="" method="get">
                     <input type="text" name="searchTerm" class="bg-transparent placeholder-black font-bold"
                         placeholder="Search">
                 </form>
