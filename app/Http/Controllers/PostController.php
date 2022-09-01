@@ -29,7 +29,11 @@ class PostController extends Controller
     {
         $posts = Post::latest();
 
-
+        if(request('searchTerm'))
+        {
+            $posts->where('title', 'like', '%' . request('searchTerm') . '%')
+                ->orWhere('body', 'like', '%' . request('searchTerm') . '%');
+        }
 
         return $posts->get();
     }
