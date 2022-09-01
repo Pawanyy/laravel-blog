@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -18,27 +19,9 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 |
 */
 
-Route::get('/', function () {
-    $posts = Post::latest()->with(['category', 'author']);
+Route::get('/', [PostController::class, 'index'])->name('home');
 
-    if(request('searchTerm'))
-    {
-        $posts->where('title', 'like', '%' . request('searchTerm') . '%')
-            ->orWhere('body', 'like', '%' . request('searchTerm') . '%');
-    }
-    return view('posts', [
-        'posts' => $posts->get(),
-        'categories' => Category::all()
-    ]);
-})->name('home');
-
-Route::get('/post/{post:slug}', function (Post $post) {
-
-    //find the post by its slug and pass it to post view
-    return view('post', [
-        'post' =>  $post
-    ]);
-})->name('post');
+Route::get('/post/{post:slug}', [PostController::class, 'show'])->name('post');
 
 Route::get('/categories/{category:slug}', function (Category $category) {
 
