@@ -11,19 +11,22 @@ class Post extends Model
 
     protected $with = ['category', 'author'];
 
-    public function scopeFilter($query)
+    public function scopeFilter($query, array $filter)
     {
-        if(request('searchTerm'))
-        {
-            $query->where('title', 'like', '%' . request('searchTerm') . '%')
-                ->orWhere('body', 'like', '%' . request('searchTerm') . '%');
-        }
+        $query->when(($filter['searchTerm'] ?? false), function ($query, $searchTerm) {
+
+            $query->where('title', 'like', "%{$searchTerm}%")
+                ->orWhere('body', 'like', "%{$searchTerm}%");
+
+        });
     }
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
 
-    public function author(){
-        return $this->belongsTo(User::class, 'user_id');
+    public function author()
+    {
+        return $this->belongsTo(User::class , 'user_id');
     }
 }
