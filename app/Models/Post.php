@@ -15,8 +15,10 @@ class Post extends Model
     {
         $query->when(($filters['searchTerm'] ?? false), function ($query, $searchTerm) {
 
-            $query->where('title', 'like', "%{$searchTerm}%")
-                ->orWhere('body', 'like', "%{$searchTerm}%");
+            $query->where(fn($query) => 
+                $query->where('title', 'like', "%{$searchTerm}%")
+                    ->orWhere('body', 'like', "%{$searchTerm}%")
+        );
 
         });
 
