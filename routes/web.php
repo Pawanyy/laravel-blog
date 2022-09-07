@@ -29,7 +29,6 @@ Route::get('/post/{post:slug}', [PostController::class, 'show'])->name('post');
 //     return view('posts', [
 //         'posts' =>  $category->posts,
 //         'currentCategory' => $category,
-//         'categories' => Category::all()
 //     ]);
 // })->name('category');
 
@@ -38,6 +37,5 @@ Route::get('/authors/{author:username}', function (User $author) {
     //find the posts by its category slug and pass it to posts view
     return view('posts', [
         'posts' =>  $author->posts,
-        'categories' => Category::all()
     ]);
 })->name('author');

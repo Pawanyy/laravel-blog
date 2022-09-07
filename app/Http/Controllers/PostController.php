@@ -11,17 +11,15 @@ class PostController extends Controller
     public function index()
     {
 
-        return view('posts', [
+        return view('posts.index', [
             'posts' => Post::latest()->filter(request(['searchTerm', 'category']))->get(),
-            'categories' => Category::all(),
-            'currentCategory' => Category::firstWhere('slug', request('category')),
         ]);
     }
 
     public function show(Post $post)
     {
          //find the post by its slug and pass it to post view
-        return view('post', [
+        return view('posts.show', [
             'post' =>  $post
         ]);
     }
