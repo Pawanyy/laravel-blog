@@ -34,7 +34,7 @@
             </div>
         </nav>
 
-        {{ $content }}
+        {{ $slot }}
 
         <footer class="py-8 px-10 mt-16 text-center bg-gray-100 rounded-xl border border-black border-opacity-5">
             <img src="/images/lary-newsletter-icon.svg" class="mx-auto" alt="" srcset="">
