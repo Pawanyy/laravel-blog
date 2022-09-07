@@ -8,17 +8,13 @@
             <div class="relative md:inline-flex bg-gray-100 rounded-xl">
                 <x-category-dropdown />
             </div>
-            <span class="relative flex md:inline-flex bg-gray-100 rounded-xl items-center">
-                <select class="reset flex-1 appearance-none py-2 px-5 pr-8 bg-transparent font-bold">
-                    <option selected> Other Filters</option>
-                    <option>Style</option>
-                </select>
-                <x-icon name="down-arrow" class="h-6 w-6 reset absolute right-2 text-xs" />
-            </span>
             <span class="relative flex md:inline-flex bg-gray-100 rounded-xl px-3 py-2">
                 <form action="" method="get">
+                    @if(request('category'))
+                    <input type="hidden" name="category" value="{{request('category')}}">
+                    @endif
                     <input type="text" name="searchTerm" class="bg-transparent placeholder-black font-bold"
-                        placeholder="Search">
+                        placeholder="Search" value="{{request('searchTerm')}}">
                 </form>
             </span>
         </div>

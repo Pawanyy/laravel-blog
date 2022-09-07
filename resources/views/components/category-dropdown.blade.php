@@ -8,7 +8,8 @@
 
     <x-dropdown-item href="/">All</x-dropdown-item>
     @foreach ($categories as $category)
-    <x-dropdown-item href="/?category={{ $category->slug }}" :active="request('category') == ($category->slug)">
+    <x-dropdown-item href="/?category={{ $category->slug }}&{{http_build_query(request()->except('category'))}}"
+        :active="request('category') == ($category->slug)">
         {{ ucwords($category->name) }}
     </x-dropdown-item>
     @endforeach
