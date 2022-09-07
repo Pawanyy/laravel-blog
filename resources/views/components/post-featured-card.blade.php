@@ -23,7 +23,7 @@
                 <div class="flex items-center text-sm">
                     <img src="/images/lary-avatar.svg" class="mr-2" alt="" srcset="">
                     <div>
-                        <a href="/authors/{{ $post->author->username }}" class="font-bold">{{ $post->author->name }}</a>
+                        <a href="/?author={{ $post->author->username }}" class="font-bold">{{ $post->author->name }}</a>
                         <h6>Mascot at Laracasts</h6>
                     </div>
                 </div>
