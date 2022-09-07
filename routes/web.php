@@ -35,7 +35,7 @@ Route::get('/post/{post:slug}', [PostController::class, 'show'])->name('post');
 Route::get('/authors/{author:username}', function (User $author) {
 
     //find the posts by its category slug and pass it to posts view
-    return view('posts', [
+    return view('posts.index', [
         'posts' =>  $author->posts,
     ]);
 })->name('author');
