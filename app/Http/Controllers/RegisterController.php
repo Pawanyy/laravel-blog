@@ -10,4 +10,9 @@ class RegisterController extends Controller
     {
         return view('register.create');
     }
+
+    public function store()
+    {
+        // store the user
+    }
 }

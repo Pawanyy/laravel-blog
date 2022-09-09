@@ -26,3 +26,5 @@ Route::get('/post/{post:slug}', [PostController::class, 'show'])->name('post');
 
 Route::get('/register', [RegisterController::class, 'create'])->name('register');
 
+Route::post('/register', [RegisterController::class, 'store']);
+
