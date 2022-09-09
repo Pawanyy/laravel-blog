@@ -13,6 +13,11 @@ class RegisterController extends Controller
 
     public function store()
     {
-        // store the user
+        request()->validate([
+            'name' => ['required'],
+            'username' => ['required'],
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
     }
 }
