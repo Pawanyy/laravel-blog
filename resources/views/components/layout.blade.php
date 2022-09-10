@@ -28,8 +28,8 @@
 
             <div class="hidden md:block">
                 <a href="/" class="text-xs text-black font-bold">Home Page</a>
-                <a href="#"
-                    class="bg-blue-500 ml-3 rounded-full text-xs text-white font-semibold px-5 py-3">Suscribe For
+                <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs text-white font-semibold px-5 py-3">Suscribe
+                    For
                     Updates</a>
             </div>
         </nav>
@@ -57,6 +57,8 @@
             </div>
         </footer>
     </section>
+
+    <x-flash></x-flash>
 
 </body>
 
