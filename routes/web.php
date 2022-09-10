@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
+use App\Http\Controllers\SessionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,12 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 Route::get('/', [PostController::class, 'index'])->name('home');
 
+Route::get('/home', [PostController::class, 'index'])->name('home');
+
 Route::get('/post/{post:slug}', [PostController::class, 'show'])->name('post');
 
-Route::get('/register', [RegisterController::class, 'create'])->name('register');
+Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 
-Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
 
+Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth');

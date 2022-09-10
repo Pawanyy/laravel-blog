@@ -26,8 +26,17 @@
                 </a>
             </div>
 
-            <div class="hidden md:block">
-                <a href="/" class="text-xs text-black font-bold">Home Page</a>
+            <div class="mt-8 md:mt-0 flex items-center">
+                @auth
+                    <span class="text-xs uppercase font-bold">Welcome , {{auth()->user()->name}}</span>
+
+                    <form action="/logout" method="post" class="text-xs font-semibold text-blue-500 ml-6">
+                        @csrf
+                        <button type="submit">Logout</button>
+                    </form>
+                    @else
+                    <a href="/register" class="text-xs text-black font-bold">Register</a>
+                @endauth
                 <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs text-white font-semibold px-5 py-3">Suscribe
                     For
                     Updates</a>
