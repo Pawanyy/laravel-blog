@@ -13,11 +13,11 @@ class RegisterController extends Controller
 
     public function store()
     {
-        request()->validate([
-            'name' => ['required'],
-            'username' => ['required'],
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+        $attributes = request()->validate([
+            'name' => ['required', 'min:3', 'max:255'],
+            'username' => ['required', 'min:3', 'max:255'],
+            'email' => ['required', 'email', 'min:3', 'max:255'],
+            'password' => ['required'], 'min:3', 'max:255',
         ]);
     }
 }
