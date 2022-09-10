@@ -36,6 +36,7 @@
                     </form>
                     @else
                     <a href="/register" class="text-xs text-black font-bold">Register</a>
+                    <a href="/login" class="text-xs ml-3 text-black font-bold">Login</a>
                 @endauth
                 <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs text-white font-semibold px-5 py-3">Suscribe
                     For
