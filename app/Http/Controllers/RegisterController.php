@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class RegisterController extends Controller
 {
@@ -19,5 +20,9 @@ class RegisterController extends Controller
             'email' => ['required', 'email', 'min:3', 'max:255'],
             'password' => ['required'], 'min:3', 'max:255',
         ]);
+
+        //$attributes['password'] = bcrypt($attributes['password']);
+
+        User::create($attributes);
     }
 }
