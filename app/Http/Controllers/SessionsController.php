@@ -11,18 +11,18 @@ class SessionsController extends Controller
     public function store()
     {
         $attributes = request()->validate([
-            'email'    => 'required|email|min:3|max:255|exists:users,email',
+            'email' => 'required|email|min:3|max:255|exists:users,email',
             'password' => 'required|min:3|max:255',
         ]);
 
-        if(auth()->attempt($attributes)){
-            
-            session()->regenerate();
-            return redirect('/')->with('success', 'Welcome Back!');
-            
+        if (!auth()->attempt($attributes)) {
+
+            return ValidationException::withMessages(['email' => 'Invalid Auth!']);
         }
 
-        throw ValidationException::withMessages(['email' => 'Invalid Auth!']);
+        session()->regenerate();
+
+        return redirect('/')->with('success', 'Welcome Back!');
     }
 
     public function create()
