@@ -1,14 +1,6 @@
 <?php
 
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\RegisterController;
-use App\Models\Category;
-use App\Models\Post;
-use App\Models\User;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
-use Spatie\YamlFrontMatter\YamlFrontMatter;
-use App\Http\Controllers\SessionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,18 +13,12 @@ use App\Http\Controllers\SessionsController;
 |
 */
 
-Route::get('/', [PostController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/home', [PostController::class, 'index'])->name('home');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/post/{post:slug}', [PostController::class, 'show'])->name('post');
-
-Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
-
-Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
-
-Route::get('/login', [SessionsController::class, 'create'])->middleware('guest');
-
-Route::post('/login', [SessionsController::class, 'store'])->middleware('guest');
-
-Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth');
+require __DIR__.'/auth.php';
